@@ -10,13 +10,13 @@ const makeDecartPoint = (x, y) => {
 };
 
 // BEGIN (write your solution here)
-const getX = (point) => {
-  //
-};
+const getAngle = (point) => point.angle;
 
-const getY = (point) => {
-  //
-};
+const getRadius = (point) => point.radius;
+
+const getX = (point) => Math.round(getRadius(point) * Math.cos(getAngle(point)));
+
+const getY = (point) => Math.round(getRadius(point) * Math.sin(getAngle(point)));
 // END
 
 export { makeDecartPoint, getX, getY };
