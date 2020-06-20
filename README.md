@@ -1,23 +1,31 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+В этой задаче, тесты написаны для отрезков, которые в свою очередь используют точки. Ваша задача, реализовать интерфейсные функции для работы с точками. Внутреннее представление точек должно быть основано на полярной системе координат, хотя интерфейс предполагает работу с декартовой системой (снаружи). Для обозначения координат используются целые числа.
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+points.js
+---------
 
-# nodejs-package
+Реализуйте и экспортируйте интерфейсные функции точек:
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+-   `makeDecartPoint`. Принимает на вход координаты и возвращает точку. Уже реализован.
+-   `getX`
+-   `getY`
 
-## Setup
+### Примеры
 
-```sh
-$ make install
+```
+const x = 4;
+const y = 8;
+
+// point хранит в себе данные в полярной системе координат
+const point = makeDecartPoint(x, y);
+
+// Здесь происходит преобразование из полярной в декартову
+getX(point); // 4
+getY(point); // 8
+
 ```
 
-## Run tests
+### Подсказки
 
-```sh
-$ make test
-```
+-   Трансляция декартовых координат в полярные была описана в теории
+-   Получить x можно по формуле `radius * cos(angle)`
+-   Получить y можно по формуле `radius * sin(angle)`
