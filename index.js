@@ -1,5 +1,5 @@
 // @ts-check
 
-import half from './src/half.js';
+import calculateDistance from './src/points.js';
 
-export default half;
+export default calculateDistance;
