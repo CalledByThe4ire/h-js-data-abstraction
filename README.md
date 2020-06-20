@@ -1,23 +1,29 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+Отрезок --- еще один графический примитив. В коде описывается парой точек, одна из которых --- начало отрезка, другая --- конец. Обычный отрезок не имеет направления, поэтому вы сами вольны выбирать то, какую точку считать началом, а какую концом.
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+В этом задании подразумевается, что вы уже понимаете принцип построения абстракции и способны самостоятельно принять решение о том, как она будет реализована. Напомню, что сделать это можно разными способами и нет одного правильного.
 
-# nodejs-package
+### segments.js
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+Реализуйте и экспортируйте указанные ниже функции:
 
-## Setup
+-   `makeSegment`. Принимает на вход две точки и возвращает отрезок.
+-   `getMidpointOfSegment`. Принимает на вход отрезок и возвращает точку находящуюся на середине отрезка.
+-   `getBeginPoint`. Принимает на вход отрезок и возвращает точку начала отрезка.
+-   `getEndPoint`. Принимает на вход отрезок и возвращает точку конца отрезка.
 
-```sh
-$ make install
+#### Пример
+
+```
+const beginPoint = makeDecartPoint(3, 2);
+const endPoint = makeDecartPoint(0, 0);
+segment = makeSegment(beginPoint, endPoint);
+
+getMidpointOfSegment(segment); // (1.5, 1)
+getBeginPoint(segment); // (3, 2)
+getEndPoint(segment); // (0, 0)
+
 ```
 
-## Run tests
+#### Подсказки
 
-```sh
-$ make test
-```
+-   Средняя точка вычисляется по формуле `x = (x1 + x2) / 2` и `y = (y1 + y2) / 2`.
