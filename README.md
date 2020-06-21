@@ -1,23 +1,35 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+### url.js
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Реализуйте абстракцию для работы с урлами. Она должна извлекать и менять части адреса. Интерфейс:
 
-# nodejs-package
+-   `make(url)` - Конструктор. Создает урл.
+-   `setProtocol(data, protocol)` - Сеттер. Меняет схему.
+-   `getProtocol(data)` - Селектор (геттер). Извлекает схему.
+-   `setHost(data, host)` - Сеттер. Меняет хост.
+-   `getHost(data)` - Геттер. Извлекает хост.
+-   `setPath(data, path)` - Сеттер. Меняет строку запроса.
+-   `getPath(data)` - Геттер. Извлекает строку запроса.
+-   `setQueryParam(data, key, value)` - Сеттер. Устанавливает значение для параметра запроса.
+-   `getQueryParam(data, paramName, default = null)` - Геттер. Извлекает значение для параметра запроса. Третьим параметром функция принимает значение по умолчанию, которое возвращается тогда, когда в запросе не было такого параметра
+-   `toString(data)` - Геттер. Преобразует урл в строковой вид.
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+```
+const url = make('https://hexlet.io/community?q=low');
 
-## Setup
+setProtocol(url, 'http:');
+toString(url); // 'http://hexlet.io/community?q=low'
 
-```sh
-$ make install
+setPath(url, '/404');
+toString(url); // 'http://hexlet.io/404?q=low'
+
+setQueryParam(url, 'page', 5);
+toString(url); // 'http://hexlet.io/404?q=low&page=5'
+
+setQueryParam(url, 'q', 'high');
+toString(url); // 'http://hexlet.io/404?q=high&page=5'
+
 ```
 
-## Run tests
+### Подсказки
 
-```sh
-$ make test
-```
+-   Работа с адресами --- [URL](https://nodejs.org/api/url.html)
