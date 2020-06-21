@@ -1,23 +1,32 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+### rational.js
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Реализуйте абстракцию для работы с рациональными числами включающую в себя следующие функции:
 
-# nodejs-package
+-   Конструктор `makeRational` - принимает на вход числитель и знаменатель, возвращает дробь.
+-   Селектор `getNumer` - возвращает числитель
+-   Селектор `getDenom` - возвращает знаменатель
+-   Сложение `add` - складывает переданные дроби
+-   Вычитание `sub` - находит разность между двумя дробями
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+Не забудьте реализовать нормализацию дробей удобным для вас способом.
 
-## Setup
+```
+const rat1 = makeRational(3, 9);
+getNumer(rat1); // 1
+getDenom(rat1); // 3
 
-```sh
-$ make install
+const rat2 = makeRational(10, 3);
+
+const rat3 = add(rat1, rat2);
+ratToString(rat3); // '11/3'
+
+const rat4 = sub(rat1, rat2);
+ratToString(rat4); // '-3/1'
+
 ```
 
-## Run tests
+#### Подсказки
 
-```sh
-$ make test
-```
+-   [Действия с дробями](https://ru.wikipedia.org/wiki/%D0%94%D1%80%D0%BE%D0%B1%D1%8C_(%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0)#%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F_%D1%81_%D0%B4%D1%80%D0%BE%D0%B1%D1%8F%D0%BC%D0%B8)
+-   Функция `getGcd` находит наибольший общий делитель двух чисел (уже импортирована в модуль)
+-   Функция `ratToString` возвращает строковое представление числа (используется для отладки)
