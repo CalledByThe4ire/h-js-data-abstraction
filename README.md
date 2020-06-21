@@ -1,23 +1,58 @@
-##
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
+### rectangle.js
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
-##
+Реализуйте абстракцию (набор функций) для работы с прямоугольниками, стороны которого всегда параллельны осям. Прямоугольник может располагаться в любом месте координатной плоскости.
 
-# nodejs-package
+При такой постановке, достаточно знать только три параметра для однозначного задания прямоугольника на плоскости: координаты левой-верхней точки, ширину и высоту. Зная их, мы всегда можем построить прямоугольник одним единственным способом.
 
-[![Node CI](https://github.com/hexlet-boilerplates/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-boilerplates/nodejs-package/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dfc50c2d88cd46d069c1/test_coverage)](https://codeclimate.com/github/hexlet-boilerplates/nodejs-package/test_coverage)
+```
+      |
+    4 |    точка   ширина
+      |       *-------------
+    3 |       |            |
+      |       |            | высота
+    2 |       |            |
+      |       --------------
+    1 |
+      |
+------|---------------------------
+    0 |  1   2   3   4   5   6   7
+      |
+      |
+      |
 
-## Setup
-
-```sh
-$ make install
 ```
 
-## Run tests
+Основной интерфейс:
 
-```sh
-$ make test
+-   `makeRectangle` (конструктор) -- создает прямоугольник. Принимает параметры: левую-верхнюю точку, ширину и высоту. Ширина и высота -- положительные числа.
+
+-   Селекторы `getStartPoint`, `getWidth` и `getHeight`
+
+-   `containsOrigin` -- проверяет, принадлежит ли центр координат прямоугольнику (не лежит на границе прямоугольника, а находится внутри). Чтобы в этом убедиться, достаточно проверить, что все вершины прямоугольника лежат в разных квадрантах (их можно высчитать в момент проверки).
+
 ```
+// Создание прямоугольника:
+// p - левая верхняя точка
+// 4 - ширина
+// 5 - высота
+//
+// p    4
+// -----------
+// |         |
+// |         | 5
+// |         |
+// -----------
+
+p = makeDecartPoint(0, 1);
+rectangle = makeRectangle(p, 4, 5);
+
+containsOrigin(rectangle); // false
+
+rectangle2 = makeRectangle(makeDecartPoint(-4, 3), 5, 4);
+containsOrigin(rectangle2); // true
+
+```
+
+#### Подсказки
+
+-   Квадрант плоскости --- любая из 4 областей (углов), на которые плоскость делится двумя взаимно перпендикулярными прямыми, принятыми в качестве осей координат.
